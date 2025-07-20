@@ -1,1 +1,19 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.1/brython.min.js"></script>
+</head>
+<body onload="brython()">
+  <textarea id="python-code" rows="10" cols="50">print("Hello from Python!")</textarea><br>
+  <button onclick="runBrython()">Run Python</button>
+  <pre id="output"></pre>
+  <script type="text/python">
+from browser import document
+def runBrython(ev):
+    code = document["python-code"].value
+    exec(code)
+document["output"].text = ""
+document["runBrython"].bind("click", runBrython)
+  </script>
+</body>
+</html>
