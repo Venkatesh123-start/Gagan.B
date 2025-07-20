@@ -1,33 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AI Fitness Tracker</title>
-  <style>
-    body { font-family: Arial, padding: 2em; background: #f9f9f9; }
-    #result { margin-top: 1em; background: #fff; padding: 1em; border: 1px solid #ddd;}
-  </style>
+    <meta charset="UTF-8">
+    <title>Personal Fitness Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Streamlit uses its own styling, but you can style this page as a landing page or for deployment with Streamlit sharing -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fafcff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 720px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+            padding: 40px 32px;
+            text-align: center;
+        }
+        h1 {
+            color: #1f77b4;
+            margin-bottom: 12px;
+        }
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 28px;
+        }
+        .button {
+            display: inline-block;
+            background: #1f77b4;
+            color: #fff;
+            padding: 14px 36px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background .18s;
+            margin-top: 18px;
+        }
+        .button:hover {
+            background: #155a8a;
+        }
+        footer {
+            margin-top: 60px;
+            color: #aaa;
+            font-size: 0.95em;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 22px 6px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h2>Simple Fitness Tracker</h2>
-  <form id="fitness-form">
-    <label>Steps Today: <input type="number" id="steps" required></label><br><br>
-    <label>Weight (kg): <input type="number" id="weight" required></label><br><br>
-    <button type="submit">Track</button>
-  </form>
-  <div id="result"></div>
-  <script>
-    document.getElementById('fitness-form').onsubmit = function(e) {
-      e.preventDefault();
-      const steps = parseInt(document.getElementById('steps').value, 10);
-      const weight = parseFloat(document.getElementById('weight').value);
-      // Simple calculation: calories burned estimation
-      const calories = Math.round(steps * 0.04 * (weight/70));
-      document.getElementById('result').innerHTML = 
-        `<b>Calories burned:</b> ${calories} kcal<br>
-         <b>Steps:</b> ${steps}<br>
-         <b>Weight:</b> ${weight} kg<br>
-         <b>Keep going!</b>`;
-    }
-  </script>
+    <div class="container">
+        <h1>Personal Fitness Tracker</h1>
+        <p>
+            Welcome to the Personal Fitness Tracker WebApp!<br><br>
+            Enter your personal parameters such as <b>Age</b>, <b>Gender</b>, <b>BMI</b>, <b>Exercise Duration</b>, <b>Heart Rate</b>, and <b>Body Temperature</b> to get a prediction of calories burned.<br>
+            This interactive tool leverages machine learning to provide personalized feedback and fitness analytics.<br>
+            <br>
+            <i>Ready to start tracking your fitness?</i>
+        </p>
+        <a class="button" href="https://share.streamlit.io/">Open the App</a>
+        <!-- Change the href to your Streamlit deployment URL -->
+    </div>
+    <footer>
+        &copy; 2025 Personal Fitness Tracker &mdash; Powered by Streamlit &amp; Machine Learning
+    </footer>
 </body>
 </html>
