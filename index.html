@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.1/brython.min.js"></script>
+  <title>AI Fitness Tracker</title>
+  <style>
+    body { font-family: Arial, padding: 2em; background: #f9f9f9; }
+    #result { margin-top: 1em; background: #fff; padding: 1em; border: 1px solid #ddd;}
+  </style>
 </head>
-<body onload="brython()">
-  <textarea id="python-code" rows="10" cols="50">print("Hello from Python!")</textarea><br>
-  <button onclick="runBrython()">Run Python</button>
-  <pre id="output"></pre>
-  <script type="text/python">
-from browser import document
-def runBrython(ev):
-    code = document["python-code"].value
-    exec(code)
-document["output"].text = ""
-document["runBrython"].bind("click", runBrython)
+<body>
+  <h2>Simple Fitness Tracker</h2>
+  <form id="fitness-form">
+    <label>Steps Today: <input type="number" id="steps" required></label><br><br>
+    <label>Weight (kg): <input type="number" id="weight" required></label><br><br>
+    <button type="submit">Track</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    document.getElementById('fitness-form').onsubmit = function(e) {
+      e.preventDefault();
+      const steps = parseInt(document.getElementById('steps').value, 10);
+      const weight = parseFloat(document.getElementById('weight').value);
+      // Simple calculation: calories burned estimation
+      const calories = Math.round(steps * 0.04 * (weight/70));
+      document.getElementById('result').innerHTML = 
+        `<b>Calories burned:</b> ${calories} kcal<br>
+         <b>Steps:</b> ${steps}<br>
+         <b>Weight:</b> ${weight} kg<br>
+         <b>Keep going!</b>`;
+    }
   </script>
 </body>
 </html>
